@@ -1,0 +1,134 @@
+{
+  "dataset": {
+    "source_file": "bbc-news-data.csv",
+    "raw_rows": 2225,
+    "rows_after_deduplication": 2092,
+    "duplicate_article_bodies": 133,
+    "missing_values": 0,
+    "empty_strings": 0,
+    "category_counts": {
+      "sport": 511,
+      "business": 510,
+      "politics": 417,
+      "tech": 401,
+      "entertainment": 386
+    },
+    "train_rows": 1463,
+    "validation_rows": 210,
+    "test_rows": 419
+  },
+  "preprocessing": {
+    "steps": [
+      "lowercase",
+      "remove punctuation and symbols",
+      "tokenize",
+      "remove English stop words"
+    ],
+    "stopword_count": 198,
+    "vocabulary_size": 15063,
+    "max_sequence_length": 353,
+    "mean_tokens_after_cleaning": 217.6
+  },
+  "results": [
+    {
+      "Model": "NN + BoW",
+      "Type": "NN",
+      "Features": "Bag of Words",
+      "Accuracy": 0.9737470167064439,
+      "Precision": 0.9745,
+      "Recall": 0.9737,
+      "F1-score": 0.9739,
+      "Macro F1": 0.9734
+    },
+    {
+      "Model": "NN + TF-IDF",
+      "Type": "NN",
+      "Features": "TF-IDF",
+      "Accuracy": 0.9761336515513126,
+      "Precision": 0.9768,
+      "Recall": 0.9761,
+      "F1-score": 0.9762,
+      "Macro F1": 0.976
+    },
+    {
+      "Model": "NN + Word2Vec",
+      "Type": "NN",
+      "Features": "Word2Vec (avg)",
+      "Accuracy": 0.9642004773269689,
+      "Precision": 0.9653,
+      "Recall": 0.9642,
+      "F1-score": 0.9644,
+      "Macro F1": 0.964
+    },
+    {
+      "Model": "RNN (BiLSTM) + Word2Vec",
+      "Type": "RNN",
+      "Features": "Word2Vec embeddings (sequence)",
+      "Accuracy": 0.9570405727923628,
+      "Precision": 0.9577790660074281,
+      "Recall": 0.9570405727923628,
+      "F1-score": 0.9570375266973512,
+      "Macro F1": 0.9565185746099057
+    },
+    {
+      "Model": "RNN (BiGRU) + learned embeddings",
+      "Type": "RNN",
+      "Features": "Learned embeddings (sequence)",
+      "Accuracy": 0.9451073985680191,
+      "Precision": 0.9455,
+      "Recall": 0.9451,
+      "F1-score": 0.945,
+      "Macro F1": 0.9448
+    }
+  ],
+  "deployed": {
+    "name": "RNN (BiLSTM) + Word2Vec",
+    "accuracy": 0.9570405727923628,
+    "f1": 0.9570375266973512,
+    "report": {
+      "business": {
+        "precision": 0.9787234042553191,
+        "recall": 0.92,
+        "f1-score": 0.9484536082474226,
+        "support": 100.0
+      },
+      "entertainment": {
+        "precision": 0.9459459459459459,
+        "recall": 0.958904109589041,
+        "f1-score": 0.9523809523809523,
+        "support": 73.0
+      },
+      "politics": {
+        "precision": 0.927710843373494,
+        "recall": 0.9746835443037974,
+        "f1-score": 0.9506172839506173,
+        "support": 79.0
+      },
+      "sport": {
+        "precision": 0.9795918367346939,
+        "recall": 0.9696969696969697,
+        "f1-score": 0.9746192893401016,
+        "support": 99.0
+      },
+      "tech": {
+        "precision": 0.9428571428571428,
+        "recall": 0.9705882352941176,
+        "f1-score": 0.9565217391304348,
+        "support": 68.0
+      },
+      "accuracy": 0.9570405727923628,
+      "macro avg": {
+        "precision": 0.9549658346333192,
+        "recall": 0.9587745717767853,
+        "f1-score": 0.9565185746099057,
+        "support": 419.0
+      },
+      "weighted avg": {
+        "precision": 0.9577790660074281,
+        "recall": 0.9570405727923628,
+        "f1-score": 0.9570375266973512,
+        "support": 419.0
+      }
+    }
+  }
+}

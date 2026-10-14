@@ -1,0 +1,6 @@
+# Runtime dependencies for the Streamlit dashboard.
+# Use Python 3.12 for TensorFlow compatibility on Streamlit Community Cloud.
+tensorflow==2.20.0
+streamlit>=1.30,<2
+numpy==1.26.4
+pandas>=2.0,<3.0
